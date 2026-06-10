@@ -209,8 +209,24 @@
             // Forces the user to slide all the way to 10
             if (sliderValue === "10") {
                 nextPage('page4', 'page5');
+                
+                // Play the audio when she lands on the final page
+                const audio = document.getElementById("birthdayAudio");
+                audio.play().catch(function(error) {
+                    console.log("Browser blocked autoplay, user needs to interact first.", error);
+                });
             } else {
                 document.getElementById("error4").style.display = "block";
+            }
+        }
+
+        // Optional: Function to pause/play the audio if she clicks the button
+        function toggleAudio() {
+            const audio = document.getElementById("birthdayAudio");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
             }
         }
     </script>
